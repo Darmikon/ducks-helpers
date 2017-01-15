@@ -73,7 +73,7 @@ function camelize(str) {
 }
 
 function isObject(obj) {
-    return obj === Object(obj);
+    return Object.prototype.toString.call(obj).slice(8,-1).toLowerCase() === 'object'
 }
 
 export function actions(TYPES){
