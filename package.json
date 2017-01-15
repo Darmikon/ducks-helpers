@@ -1,0 +1,36 @@
+{
+  "name": "ducks-helpers",
+  "version": "1.0.0",
+  "description": "Utils for redux",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel index.js --out-dir lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Darmikon/ducks-helpers.git"
+  },
+  "keywords": [
+    "redux",
+    "react"
+  ],
+  "author": "Roman Yudin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Darmikon/ducks-helpers/issues"
+  },
+  "homepage": "https://github.com/Darmikon/ducks-helpers#readme",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0"
+  },
+  "dependencies": {
+    "redux-actions": "^1.2.0"
+  }
+}
