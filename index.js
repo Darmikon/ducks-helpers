@@ -82,7 +82,7 @@ export function actions(TYPES){
     }
 
     return Object.keys(TYPES).reduce((actions,TYPE)=>{
-        actions[camelize(TYPE)] = createAction(TYPE);
+        actions[camelize(TYPE)] = createAction(TYPES[TYPE]);
 
         return actions;
     },{})
