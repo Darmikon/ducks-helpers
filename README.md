@@ -14,3 +14,32 @@ export const TYPE = constants('module-name/namespace', [
 	'NORMAL_ACTION' //it will create only itself
 ])
 ```
+
+```
+import {actions} from 'ducks-helpers'
+export const ACTION = actions(TYPE)
+//it will create getNote, getNoteLoading using redux-actions
+```
+
+
+```
+import {loading, success, error} from 'ducks-helpers'
+
+//if you have
+const INITIAL_STATE = {
+    loading: false,
+    error: null,
+    payload: {} //- then you can simplify reducer
+}
+
+
+export default function reducer(state = INITIAL_STATE, action = {}) {
+	switch (action.type) {
+		// do reducer stuff
+		case TYPE.GET_NOTES:
+			return loading(state,action)
+		case TYPE.GET_NOTES_SUCCESS:
+			return success(state,action)
+		case TYPE.GET_NOTES_ERROR:
+			return error(state, action)
+```

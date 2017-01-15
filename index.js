@@ -54,7 +54,7 @@ export function success(state, action){
 
 export function error(state, action){
     let error = action.payload && action.payload
-    return { ...state, payload: [], error, loading: false }
+    return { ...state, error, loading: false }
 }
 
 
