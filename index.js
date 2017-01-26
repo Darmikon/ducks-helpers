@@ -36,7 +36,7 @@ export function constants(namespace = '', types){
                 obj[type + '_' + suf] = (namespace ? `${namespace}/` : '') + `${type}_${suf}`
             })
         }else{
-            obj[name] = name;
+            obj[name] = (namespace ? `${namespace}/` : '') + `${name}_${suf}`
         }
 
         return obj;
