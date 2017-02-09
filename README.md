@@ -34,24 +34,24 @@ export const TYPE = constants('module-name/namespace', [
 Result:
 ```
 // with ~
-TYPE.ASYNC_ACTION === 'module-name/namespace/ASYNC_ACTION'
-TYPE.ASYNC_ACTION_SUCCESS === 'module-name/namespace/ASYNC_ACTION_SUCCESS'
-...
-TYPE.ASYNC_ACTION_CANCELED === 'module-name/namespace/ASYNC_ACTION_CANCELED'
+// TYPE.ASYNC_ACTION === 'module-name/namespace/ASYNC_ACTION'
+// TYPE.ASYNC_ACTION_SUCCESS === 'module-name/namespace/ASYNC_ACTION_SUCCESS'
+//...
+// TYPE.ASYNC_ACTION_CANCELED === 'module-name/namespace/ASYNC_ACTION_CANCELED'
 
 // without ~
-TYPE.SYNC_ACTION === 'module-name/namespace/SYNC_ACTION'
+// TYPE.SYNC_ACTION === 'module-name/namespace/SYNC_ACTION'
 ```
 
 reducer.js using handleActions() from [redux-actions](https://github.com/acdlite/redux-actions#handleactionsreducermap-defaultstate)
 ```
 export default handleActions({
-    TYPE.SYNC_ACTION: (state, action) => state,
-    TYPE.ASYNC_ACTION: (state, action) => state,
-    TYPE.ASYNC_ACTION_LOADING: (state, action) => state,
+    [TYPE.SYNC_ACTION]: (state, action) => state,
+    [TYPE.ASYNC_ACTION]: (state, action) => state,
+    [TYPE.ASYNC_ACTION_LOADING]: (state, action) => state,
     //... other suffixes also is available and can be used
-    TYPE.ASYNC_ACTION_SUCCESS: (state, action) => state,
-    TYPE.ASYNC_ACTION_ERROR: (state, action) => state,
+    [TYPE.ASYNC_ACTION_SUCCESS]: (state, action) => state,
+    [TYPE.ASYNC_ACTION_ERROR]: (state, action) => state,
 }, {})
 ```
 
