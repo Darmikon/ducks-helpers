@@ -1,5 +1,5 @@
 # ducks-helpers
-Utils for ducks in redux to create action types and actions creators
+Utils for [ducks](https://github.com/erikras/ducks-modular-redux) in redux to create action types and actions creators
 
 ###Installation
 ```
@@ -43,8 +43,9 @@ Result:
 // TYPE.SYNC_ACTION === 'module-name/namespace/SYNC_ACTION'
 ```
 
-reducer.js using handleActions() from [redux-actions](https://github.com/acdlite/redux-actions#handleactionsreducermap-defaultstate)
+Using handleActions() from [redux-actions](https://github.com/acdlite/redux-actions#handleactionsreducermap-defaultstate)
 ```
+// reducer
 export default handleActions({
     [TYPE.SYNC_ACTION]: (state, action) => state,
     [TYPE.ASYNC_ACTION]: (state, action) => state,
@@ -75,7 +76,7 @@ export const ACTION = actions(TYPE)
 ```
 
 All action creators have been built now.
-You can use any action creators in your component.
+You can use any action creators in your container.
 
 ```
 // container.js
