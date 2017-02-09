@@ -49,7 +49,7 @@ export default handleActions({
     [TYPE.SYNC_ACTION]: (state, action) => state,
     [TYPE.ASYNC_ACTION]: (state, action) => state,
     [TYPE.ASYNC_ACTION_LOADING]: (state, action) => state,
-    //... other suffixes also is available and can be used
+    //... other suffixes also are available and can be used
     [TYPE.ASYNC_ACTION_SUCCESS]: (state, action) => state,
     [TYPE.ASYNC_ACTION_ERROR]: (state, action) => state,
 }, {})
