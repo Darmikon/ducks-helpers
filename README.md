@@ -11,15 +11,14 @@ npm i --save ducks-helpers
 If `~` sign presents at the beginning of the string
 then extra sufixes will be generated:
 ```
-//SUFFIXES
-[
-    'LOADING',
-    'PENDING',
-    'SUCCESS',
-    'ERROR',
-    'FAILED',
-    'CANCELED'
-]
+// available SUFFIXES
+
+// 'LOADING'
+// 'PENDING'
+// 'SUCCESS'
+// 'ERROR'
+// 'FAILED'
+// 'CANCELED'
 ```
 
 How to use:
