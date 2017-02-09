@@ -1,6 +1,6 @@
 {
   "name": "ducks-helpers",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Utils for redux",
   "main": "lib/index.js",
   "files": [

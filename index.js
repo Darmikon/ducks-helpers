@@ -43,21 +43,6 @@ export function constants(namespace = '', types){
     },{})
 }
 
-//HELPERS
-export function loading(state, action){
-    return { ...state, error: null, loading: true }
-}
-
-export function success(state, action){
-    return { ...state, payload: action.payload, error: null, loading: false }
-}
-
-export function error(state, action){
-    let error = action.payload && action.payload
-    return { ...state, error, loading: false }
-}
-
-
 function camelize(str) {
     return str.toLowerCase()
         .split('_')

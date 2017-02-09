@@ -1,45 +1,98 @@
 # ducks-helpers
-Utils for ducks in redux
+Utils for ducks in redux to create action types and actions creators
 
-Api is not stable. You can use some ideas in your projects.
-`constants()` - generates constants, however if `~` sign presents at the beginning then extra sufixes will be generated
+###Installation
+```
+npm i --save ducks-helpers
+```
 
+###`constants(namespace, actions)`
+`constants()` - generates action types names
+If `~` sign presents at the beginning of the string
+then extra sufixes will be generated:
+```
+//SUFFIXES
+[
+    'LOADING',
+    'PENDING',
+    'SUCCESS',
+    'ERROR',
+    'FAILED',
+    'CANCELED'
+]
+```
+
+How to use:
 ```
 import {constants} from 'ducks-helpers'
-```
-
-```
 export const TYPE = constants('module-name/namespace', [
-	'~GET_NOTE', //it will create GET_NOTE, GET_NOTE_LOADING, ...
-	'NORMAL_ACTION' //it will create only itself
+    '~ASYNC_ACTION',
+    'SYNC_ACTION'
 ])
 ```
 
+Result:
+```
+// with ~
+TYPE.ASYNC_ACTION === 'module-name/namespace/ASYNC_ACTION'
+TYPE.ASYNC_ACTION_SUCCESS === 'module-name/namespace/ASYNC_ACTION_SUCCESS'
+...
+TYPE.ASYNC_ACTION_CANCELED === 'module-name/namespace/ASYNC_ACTION_CANCELED'
+
+// without ~
+TYPE.SYNC_ACTION === 'module-name/namespace/SYNC_ACTION'
+```
+
+reducer.js using handleActions() from [redux-actions](https://github.com/acdlite/redux-actions#handleactionsreducermap-defaultstate)
+```
+export default handleActions({
+    TYPE.SYNC_ACTION: (state, action) => state,
+    TYPE.ASYNC_ACTION: (state, action) => state,
+    TYPE.ASYNC_ACTION_LOADING: (state, action) => state,
+    //... other suffixes also is available and can be used
+    TYPE.ASYNC_ACTION_SUCCESS: (state, action) => state,
+    TYPE.ASYNC_ACTION_ERROR: (state, action) => state,
+}, {})
+```
+
+
+###`actions(types)`
+
+`types` is an array of constants.
+In case of using `~` sign at the beginning of action name
+it will also create action creators with suffixes
+`syncAction`,
+`asyncAction`,
+`asyncActionLoading`,
+`asyncActionPending`,
+`asyncActionCanceled`,
+`asyncActionError`,
+`asyncActionFailed`
+using redux-actions:
 ```
 import {actions} from 'ducks-helpers'
 export const ACTION = actions(TYPE)
-//it will create getNote, getNoteLoading using redux-actions
 ```
 
+All action creators have been built now.
+You can use any action creators in your component.
 
 ```
-import {loading, success, error} from 'ducks-helpers'
+// container.js
+import { ACTION } from '../duck'
+...
+@connect(
+    ...,
+    {
+        asyncAction: ACTION.asyncAction
+    }
 
-//if you have
-const INITIAL_STATE = {
-    loading: false,
-    error: null,
-    payload: {} //- then you can simplify reducer
+)
+...
+
+componentWillMount(){
+    this.props.asyncAction()
 }
 
-
-export default function reducer(state = INITIAL_STATE, action = {}) {
-	switch (action.type) {
-		// do reducer stuff
-		case TYPE.GET_NOTES:
-			return loading(state,action)
-		case TYPE.GET_NOTES_SUCCESS:
-			return success(state,action)
-		case TYPE.GET_NOTES_ERROR:
-			return error(state, action)
+...
 ```
